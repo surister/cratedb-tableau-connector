@@ -63,12 +63,47 @@ on a Windows machine it is: `C:\Program Files\Tableau\Tableau 2024.3\bin\tabquer
 `calcs` and `staples` tables into the CrateDB instance. The script in `./data/setup_data.py` can be used to
 automatically create the tables and load the data.
 
-MacOs
-```shell
-python ./data/setup_data.py
-```
+   MacOs
+   ```shell
+   python ./data/setup_data.py
+   ```
+   
+   Windows
+   ```shell
+   py ./data/setup_data.py
+   ```
 
-Windows
-```shell
-py ./data/setup_data.py
-```
+3. Make the connector available by running Tableau with the option `-DConnectPluginsPath=/path_to_connectors`.
+
+    The option can automatically be added by using MacOs's apple-script and Window's shortcut target.
+
+    * On `Windows` the shortcut target (right click Tableau's shortcut) should look like:
+    `C:\Program Files\Tableau\Tableau 2024.3\bin\tableau.exe" -DConnectPluginsPath=C:\PATH_TO_REPOSITORY\cratedb-tableau-connector`
+   
+    * On `MacOs` the apple script should look like:
+   `do shell script "Applications/'Tableau Desktop 2024.3.app'/Contents/MacOs/Tableau -DConnectPluginsPath=/PATH_TO_REPOSITORY/cratedb-tableau-connector"`
+
+    It is recommended to create two AppleScripts/shortcuts: one for development (the one just created) and a standard version.
+    One for quick connector development and the other to test the user installation process outlined in the `README.md`
+
+    At this stage, opening Tableau with `-DConnectPluginsPath`, the connector should appear:
+
+    ![img.png](imgs/tableau_connectors.png)
+
+4. Test connectivity with CrateDB.
+   
+   a. Open Tableau and click on 'more'
+   
+   ![img.png](imgs/img.png)
+        
+   b. Search for 'crate' and click on it.
+
+   ![img_2.png](imgs/img_2.png)
+   
+   c. Introduce the credentials and Sign In.
+
+   ![img_3.png](imgs/img_3.png)
+   
+   d. Choose a schema, you should now be able to see all the tables and load data into a workbook.
+
+   ![img_4.png](imgs/img_4.png)
