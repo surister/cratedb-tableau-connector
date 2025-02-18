@@ -29,7 +29,7 @@ uv venv
 uv pip install -r requirements.txt
 ```
 
-You should be able to now use `tdvt`, we'll use that quite a lot.
+You should be able to now use `tdvt`.
 
 ```
 python -m tdvt.tdvt
@@ -104,6 +104,94 @@ automatically create the tables and load the data.
 
    ![img_3.png](imgs/img_3.png)
    
-   d. Choose a schema, you should now be able to see all the tables and load data into a workbook.
+   d. Pick a schema, usually 'doc', you should now be able to see all the tables and load data into a workbook.
 
    ![img_4.png](imgs/img_4.png)
+
+5. Using Tableau Desktop create one Tableau data source (tds) for each table; Calcs and Staples with the 
+name convection {table_name}.cratedb inside the directory `./tests/tds`
+   
+   a. Open Tableau Desktop and connect to the schema holding the `Staples` and `Calcs` tables using the instructions
+      from step 4.
+   
+   b. With the mouse, drag the table 'Calcs' into the working area (big white sheet in the middle)
+      
+   ![tds_img.png](imgs/tds_img.png)
+
+   c. Click on `Update now` to check that the data is properly loaded, then re-name the source to `cast_calcs.cratedb`.
+
+   ![tds_img1.png](imgs/tds_img1.png)
+
+   d. Click on `Sheet 1`
+
+   ![img_2.png](imgs/ts_img2.png)
+   
+   e. Right click on the data source name, `cast_calcs.cratedb` and then click on `Add to Saved Data Sources`
+
+   ![img_3.png](imgs/ts_img3.png)
+
+   f. Save it to `./tests/tds`, this is the Tableau data source that tells Tableau how to access (with credentials) to
+   the target table.
+
+   g. Repeat the process with the `Staples` table, name it `staples.cratedb`.
+
+   This is how the `./tests/tds` directory should look like:
+   
+   ![img_4.png](imgs/tds_img4.png)
+
+   `_sample_staples.cratedb.tds` and `_sample_cast_calcs.cratedb.tds` are provided as examples of how they'd look like.
+   Alternatively, as they only differ in the connection values, so you could theoretically open the sample files, and
+   add your CrateDB connection parameters, this is not recommended as it might not work in the future, also if table
+   schema changes tds files would need to be re-created.
+
+6. Create the Tableau tds tests. Important: Read all before running the command.
+
+   Run the command `python -m tdvt.tdvt action --add_ds cratedb` inside the `./tests` directory.
+   
+   * When asked if `Would you like to run TDVT against a schema other than TestV1?`, pick yes, it is likely that you
+   loaded the tables in the `doc` schema.
+   * For the other options, pick no (n) or skip (s) to every other option, as we already ship the config file and password file.
+   * If your CrateDB cluster **has** a password, open `./tests/tds/cratedb.password` and change `empty` for the password.
+
+   The inputs should look like:
+   
+   ![img_5.png](imgs/ts_img5.png)
+
+7. In `cratedb.ini` fill `CommandLineOverride` with 'DConnectPluginsPath' and the `cratedb_jdbc` path. Similarly, as we did in Step 3.
+
+8. Run tdvt generate inside `./tests`.
+   
+   Command: `python -m tdvt.tdvt run cratedb --generate`, this only needs to be run when you modify `cratedb.ini`,
+   if you modify the `dialect.tdd` file or any file within `cratedb_jdbc` directory, you **DO NOT** need to run it.
+   
+   Tests will run, it is ok for the first run to fail, subsequent runs **DO NOT**, need the `--generate` parameter.
+
+9. Run tests inside `./tests`
+   
+   Command: `python -m tdvt.tdvt run cratedb --force-run`, the force-run parameter forces to keep running even when
+   tests fails. 
+
+   If everything went well, there should be more passed tests that failed.
+
+## Debugging tests.
+
+Everytime the tests are run, several logs files are generated in different places:
+
+#### Run logs
+
+These are generated in the directory you run the tests from, usually `./tests`
+* `tabquery_logs.zip` - Logs for tabquery.exe, sometimes some connection issues can be seen here.
+* `tdvt_log_combined` - Logs for `tdvt.tdvt` cli.
+* `tests_results_combined.csv` - Results for tests, here we can see expected vs results, the most useful document for debugging, it is
+recommended to use a proper CSV visualization tool that supports filtering and ordering, e.g. PyCharm (or any JetBrains ide),
+Excel, Google sheet, Tableau...
+
+Sometimes some issues can be logged in Tableau's Desktop logs.
+
+On Windows:
+`C:\Users\YOUR_USER\Documents\My Tableau Repository\Logs`
+
+On MacOs:
+`/Users/YOUR_USER/Documents/My Tableau Repository/Logs`
+
+Tableau server logs can be found [here](https://help.tableau.com/current/server/en-us/logs_loc.htm)
