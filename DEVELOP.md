@@ -140,18 +140,18 @@ name convection {table_name}.cratedb inside the directory `./tests/tds`
    ![img_4.png](imgs/tds_img4.png)
 
    `_sample_staples.cratedb.tds` and `_sample_cast_calcs.cratedb.tds` are provided as examples of how they'd look like.
-   Alternatively, as they only differ in the connection values, so you could theoretically open the sample files, and
-   add your CrateDB connection parameters, this is not recommended as it might not work in the future, also if table
-   schema changes tds files would need to be re-created.
+   Alternatively, as they only differ in the connection values, you could theoretically open the sample files, and
+   add your CrateDB connection parameters, however this is not recommended as it might not work in the future, also if table
+   schema changes, tds files would need to be re-created.
 
 6. Create the Tableau tds tests. Important: Read all before running the command.
 
    Run the command `python -m tdvt.tdvt action --add_ds cratedb` inside the `./tests` directory.
    
    * When asked if `Would you like to run TDVT against a schema other than TestV1?`, pick yes, it is likely that you
-   loaded the tables in the `doc` schema.
+   loaded the tables into the `doc` schema.
    * For the other options, pick no (n) or skip (s) to every other option, as we already ship the config file and password file.
-   * If your CrateDB cluster **has** a password, open `./tests/tds/cratedb.password` and change `empty` for the password.
+   * If your CrateDB cluster **has** a password, open `./tests/tds/cratedb.password` and change `empty` for a valid password.
 
    The inputs should look like:
    
@@ -169,7 +169,7 @@ name convection {table_name}.cratedb inside the directory `./tests/tds`
 9. Run tests inside `./tests`
    
    Command: `python -m tdvt.tdvt run cratedb --force-run`, the force-run parameter forces to keep running even when
-   tests fails. 
+   tests fail. 
 
    If everything went well, there should be more passed tests that failed.
 
@@ -180,13 +180,13 @@ Everytime the tests are run, several logs files are generated in different place
 #### Run logs
 
 These are generated in the directory you run the tests from, usually `./tests`
-* `tabquery_logs.zip` - Logs for tabquery.exe, sometimes some connection issues can be seen here.
+* `tabquery_logs.zip` - Logs for `tabquery.exe`, sometimes some connection issues can be seen here.
 * `tdvt_log_combined` - Logs for `tdvt.tdvt` cli.
 * `tests_results_combined.csv` - Results for tests, here we can see expected vs results, the most useful document for debugging, it is
 recommended to use a proper CSV visualization tool that supports filtering and ordering, e.g. PyCharm (or any JetBrains ide),
 Excel, Google sheet, Tableau...
 
-Sometimes some issues can be logged in Tableau's Desktop logs.
+Sometimes, some issues are also logged in Tableau's Desktop logs.
 
 On Windows:
 `C:\Users\YOUR_USER\Documents\My Tableau Repository\Logs`
