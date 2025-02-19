@@ -1084,8 +1084,7 @@
             <formula part='week'>CAST(FLOOR((7 + EXTRACT(DOY FROM %2) - 1 + EXTRACT(DOW FROM DATE_TRUNC(&apos;YEAR&apos;,
                 %2))) / 7) AS TEXT)
             </formula>
-            <formula part='iso-quarter'>CAST((LEAST(CAST((EXTRACT(WEEK FROM %2) - 1) AS BIGINT) / 13, 3) + 1) AS TEXT)
-            </formula>
+            <formula part='iso-quarter'>CAST((LEAST(CAST((EXTRACT(WEEK FROM %2) - 1) AS BIGINT) / 13, 3) + 1) AS TEXT)</formula>
             <formula part='iso-week'>TO_CHAR(%2, &apos;IW&apos;)</formula>
             <formula part='iso-weekday'>TO_CHAR(%2, &apos;ID&apos;)</formula>
             <formula part='iso-year'>TO_CHAR(%2, &apos;IYYY&apos;)</formula>
@@ -1242,6 +1241,19 @@
                 <part name='hour' value='hour'/>
                 <part name='minute' value='minute'/>
                 <part name='second' value='second'/>
+            </date-part-group>
+            <date-part-group>
+                <date-function name='DATENAME'/>
+                <part name='second' value='SS'/>
+                <part name='minute' value='MI'/>
+                <part name='hour' value='HH24'/>
+                <part name='month' value='Month'/>
+                <part name='day' value='DD'/>
+                <part name='month' value='Month'/>
+                <part name='year' value='YYYY'/>
+                <part name='quarter' value='Q'/>
+                <part name='dayofyear' value='DDD'/>
+                <part name='weekday' value='D'/>
             </date-part-group>
         </date-parts>
         <format-date-literal formula="(DATE '%1')" format='yyyy-MM-dd'/>
