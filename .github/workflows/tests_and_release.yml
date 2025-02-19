@@ -47,6 +47,6 @@ jobs:
           source ./.venv/bin/activate
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
           ls
-          TACO_FILE_PATH=$(find "$(pwd/packaged-connector -P)" -name "*.taco" | head -n 1)
+          TACO_FILE_PATH=$(find "$(pwd)/packaged-connector" -name "*.taco" | head -n 1)
           echo $TACO_FILE_PATH
           echo "TACO_FILE_PATH=TACO_FILE_PATH" >> $GITHUB_ENV
