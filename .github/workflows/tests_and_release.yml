@@ -46,7 +46,12 @@ jobs:
           echo Workflow: Building connector connector 
           source ./.venv/bin/activate
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
-          ls
           TACO_FILE_PATH=$(find "$(pwd)/packaged-connector" -name "*.taco" | head -n 1)
-          echo $TACO_FILE_PATH
+          
+          if [[ "TACO_FILE_PATH" != *"cratedb_jdbc"* ]]; then
+            echo "Error: TACO_FILE does not contain 'cratedb_jdbc', are we correctly building and getting the full path?" >&2
+            exit 1
+          fi
+
+          echo Workflow: Taco file is in: $TACO_FILE_PATH
           echo "TACO_FILE_PATH=TACO_FILE_PATH" >> $GITHUB_ENV
