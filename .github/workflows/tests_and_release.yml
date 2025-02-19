@@ -32,4 +32,4 @@ jobs:
           source ./.venv/bin/activate
           python -m pip install setuptools
           python setup.py install
-          python -m connector_packager.package
+          python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
