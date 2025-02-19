@@ -36,11 +36,13 @@ jobs:
       - name: Validate connector
         working-directory: connector-packager
         run: |
-          echo Workflow: Validating connector 
+          echo Workflow: Validating connector
+          source ./.venv/bin/activate
           python -m connector_packager.package --validate $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
 
       - name: Validate connector
         working-directory: connector-packager
         run: |
           echo Workflow: Building connector connector 
+          source ./.venv/bin/activate
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
