@@ -19,6 +19,7 @@ jobs:
         with:
           repository: tableau/connector-plugin-sdk
           ref: tableau-2024.2
+          path: tableau-connector-sdk
 
       - name: Set up Python
         uses: actions/setup-python@v5
