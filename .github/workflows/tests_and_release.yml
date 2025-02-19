@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: 3.13
 
-      - name: Package the connector
+      - name: Set up Tableau connector packager
         working-directory: connector-packager
         run: |
           python -m venv .venv
@@ -38,11 +38,14 @@ jobs:
         run: |
           echo Workflow: Validating connector
           source ./.venv/bin/activate
-          python -m connector_packager.package --validate $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
+          python -m connector_packager.package --validate-only $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
 
-      - name: Validate connector
+      - name: Build connector
         working-directory: connector-packager
         run: |
           echo Workflow: Building connector connector 
           source ./.venv/bin/activate
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
+          TACO_FILE_PATH=$(find ./packaged-connector/ -name "*.taco" | head -n 1)
+          echo $TACO_FILE_PATH
+          echo "TACO_FILE_PATH=TACO_FILE_PATH" >> $GITHUB_ENV
