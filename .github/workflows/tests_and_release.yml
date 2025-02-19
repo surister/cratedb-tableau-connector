@@ -32,4 +32,15 @@ jobs:
           source ./.venv/bin/activate
           python -m pip install setuptools
           python setup.py install
+
+      - name: Validate connector
+        working-directory: connector-packager
+        run: |
+          echo Workflow: Validating connector 
+          python -m connector_packager.package --validate $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
+
+      - name: Validate connector
+        working-directory: connector-packager
+        run: |
+          echo Workflow: Building connector connector 
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
