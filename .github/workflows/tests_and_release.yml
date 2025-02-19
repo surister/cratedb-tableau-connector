@@ -62,5 +62,5 @@ jobs:
       - name: Upload the connector to GH release.
         uses: actions/upload-artifact@v4
         with:
-          path: ${{ steps.build-connector.outputs.taco_path }}
+          path: ${{ steps.build-connector.outputs.TACO_FILE_PATH }}
           if-no-files-found: error
