@@ -1,8 +1,6 @@
 name: Validate and Release connector
 on:
   push:
-    branches:
-      - ci_testing
   release:
     types: [published]
 
@@ -21,3 +19,18 @@ jobs:
         with:
           repository: tableau/connector-plugin-sdk
           ref: tableau-2024.2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Package the connector
+        working-directory: connector-packager
+        run: |
+        # https://tableau.github.io/connector-plugin-sdk/docs/package-sign#package-the-connector
+          python -m venv .venv
+          source ./.venv/bin/activate
+          python setup.py install
+              
+          python -m connector_packager.package
