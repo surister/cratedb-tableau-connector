@@ -27,7 +27,7 @@ jobs:
       - name: debug
         run: |
           pwd
-          ls
+          ls cratedb-tableau-connector-jdbc
       - name: Package the connector
         working-directory: connector-packager
         run: |
