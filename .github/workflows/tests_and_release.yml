@@ -30,4 +30,7 @@ jobs:
           source ./.venv/bin/activate
           python -m pip install setuptools
           python setup.py install
+          pwd
+          ls
+          ls ..
           python -m connector_packager.package ./cratedb_jdbc
