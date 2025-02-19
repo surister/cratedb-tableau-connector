@@ -28,7 +28,6 @@ jobs:
       - name: Package the connector
         working-directory: connector-packager
         run: |
-        # https://tableau.github.io/connector-plugin-sdk/docs/package-sign#package-the-connector
           python -m venv .venv
           source ./.venv/bin/activate
           python setup.py install
