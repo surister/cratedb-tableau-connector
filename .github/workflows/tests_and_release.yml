@@ -14,11 +14,11 @@ jobs:
         with:
           path: cratedb-tableau-connector-jdbc
 
-      - name: Checkout Tableau Connector SDK
-        uses: actions/checkout@v4
-        with:
-          repository: tableau/connector-plugin-sdk
-          ref: tableau-2024.2
+#      - name: Checkout Tableau Connector SDK
+#        uses: actions/checkout@v4
+#        with:
+#          repository: tableau/connector-plugin-sdk
+#          ref: tableau-2024.2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,6 +41,5 @@ jobs:
           echo $GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE
           
-          echo diff--
-          ls /
+      
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector-jdbc/cratedb_jdbc
