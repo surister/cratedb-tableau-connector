@@ -37,4 +37,7 @@ jobs:
           ls ..
           echo $GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE
-          python -m connector_packager.package ../cratedb-tableau-connector-jdbc/cratedb_jdbc
+          
+          echo diff--
+          ls /
+          python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector-jdbc/cratedb_jdbc
