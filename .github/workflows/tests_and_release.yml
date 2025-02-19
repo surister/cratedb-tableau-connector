@@ -18,21 +18,13 @@ jobs:
       - name: Checkout CrateDB connector
         uses: actions/checkout@v4
         with:
-          path: cratedb-tableau-connector-jdbc
-
-
+          path: cratedb-tableau-connector
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.13
 
-      - name: debug
-        run: |
-          pwd
-          ls
-          echo ls cratedb-tableau-connector-jdbc 
-          ls cratedb-tableau-connector-jdbc
       - name: Package the connector
         working-directory: connector-packager
         run: |
@@ -40,11 +32,4 @@ jobs:
           source ./.venv/bin/activate
           python -m pip install setuptools
           python setup.py install
-          pwd
-          ls
-          ls ..
-          echo $GITHUB_WORKSPACE
-          ls $GITHUB_WORKSPACE
-          
-      
-          python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector-jdbc/cratedb_jdbc
+          python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
