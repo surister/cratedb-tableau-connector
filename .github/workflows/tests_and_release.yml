@@ -1,0 +1,67 @@
+name: Validate and Release connector
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  release:
+    types: [published]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Tableau Connector SDK
+        uses: actions/checkout@v4
+        with:
+          repository: tableau/connector-plugin-sdk
+          ref: tableau-2024.2
+
+      - name: Checkout CrateDB connector
+        uses: actions/checkout@v4
+        with:
+          path: cratedb-tableau-connector
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Set up Tableau connector packager
+        working-directory: connector-packager
+        run: |
+          python -m venv .venv
+          source ./.venv/bin/activate
+          python -m pip install setuptools
+          python -m pip install .
+
+      - name: Validate connector
+        working-directory: connector-packager
+        run: |
+          source ./.venv/bin/activate
+          python -m connector_packager.package --validate-only $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
+
+      - name: Build connector
+        if: ${{ github.event_name == 'release' }}
+        working-directory: connector-packager
+        id: build-connector
+        run: |
+          source ./.venv/bin/activate
+          python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
+          TACO_FILE_PATH=$(find "$(pwd)/packaged-connector" -name "*.taco" | head -n 1)
+          
+          echo Workflow: Taco file is in: $TACO_FILE_PATH
+          
+          if [[ "$TACO_FILE_PATH" != *"cratedb_jdbc"* ]]; then
+            echo "Error: TACO_FILE does not contain 'cratedb_jdbc', are we correctly building and getting the full path?" >&2
+            exit 1
+          fi
+          
+          echo "TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
+
+      - name: Upload the connector to GH release assets
+        uses: softprops/action-gh-release@v2
+        if: ${{ github.event_name == 'release' }}
+        with:
+          files: ${{ steps.build-connector.outputs.TACO_FILE_PATH }}
