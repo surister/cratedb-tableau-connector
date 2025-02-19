@@ -55,10 +55,12 @@ jobs:
           fi
           
           echo "TACO_FILE_PATH=TACO_FILE_PATH" >> $GITHUB_ENV
-
+      - name: debug
+        run: |
+          echo $TACO_FILE_PATH
+          ls $TACO_FILE_PATH
       - name: Upload the connector to GH release.
         uses: actions/upload-artifact@v4
         with:
-          name: cratedb_jdbc.taco
           path: $TACO_FILE_PATH
           if-no-files-found: error
