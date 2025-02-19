@@ -54,7 +54,8 @@ jobs:
             exit 1
           fi
           
-          echo "TACO_FILE_PATH=TACO_FILE_PATH" >> $GITHUB_OUTPUT
+          echo "TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
+
       - name: Upload the connector to GH release.
         uses: actions/upload-artifact@v4
         with:
