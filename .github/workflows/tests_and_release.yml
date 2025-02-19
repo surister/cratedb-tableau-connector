@@ -1,0 +1,15 @@
+name: Validate and Release connector
+on:
+  release:
+    types: [published]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Tableau Connector SDK
+        uses: actions/checkout@v4
+        with:
+          repository: tableau/connector-plugin-sdk
+          ref: tableau-2024.2
