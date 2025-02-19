@@ -12,7 +12,7 @@ jobs:
       - name: Checkout CrateDB connector
         uses: actions/checkout@v4
         with:
-          path: cratedb-tableau-connector
+          path: cratedb-tableau-connector-jdbc
 
       - name: Checkout Tableau Connector SDK
         uses: actions/checkout@v4
@@ -37,4 +37,4 @@ jobs:
           ls ..
           echo $GITHUB_WORKSPACE
           ls $GITHUB_WORKSPACE
-          python -m connector_packager.package ./cratedb_jdbc
+          python -m connector_packager.package ../cratedb-tableau-connector-jdbc/cratedb_jdbc
