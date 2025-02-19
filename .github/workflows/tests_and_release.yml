@@ -30,7 +30,6 @@ jobs:
         run: |
           python -m venv .venv
           source ./.venv/bin/activate
-          python -m pip install distutils
+          python -m pip install setuptools
           python setup.py install
-              
           python -m connector_packager.package
