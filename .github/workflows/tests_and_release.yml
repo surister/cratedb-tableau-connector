@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout CrateDB connector
         uses: actions/checkout@v4
+        with:
+          path: cratedb-tableau-connector
 
       - name: Checkout Tableau Connector SDK
         uses: actions/checkout@v4
