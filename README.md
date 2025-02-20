@@ -12,7 +12,7 @@ we circumvent/fix those limitations with our custom connector.
 
 You will need two things:
 
-The `postgresql jdbc driver` and the `cratedb_jdbc`.
+The `postgresql jdbc driver` and the `cratedb` connector..
 
 ### Get the Postgresql jdbc driver.
 
@@ -28,10 +28,9 @@ The latest CrateDB jdbc tested driver is `cratedb-jdbc-standalone-2.7.0`
 
 Note: `postgresql-42.7.5.jar` does not seem to work.
 
-### Get the connector.
+### Get the CrateDB connector.
 
-Clone the repository `git clone https://github.com/crate/cratedb-tableau-connector.git` or manually
-download `cratedb_jdbc`.
+You can find the connector in the [release section.](https://github.com/crate/cratedb-tableau-connector/releases)
 
 Put it in: 
 
