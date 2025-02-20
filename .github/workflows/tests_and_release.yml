@@ -53,6 +53,7 @@ jobs:
           
           NEW_TACO_FILE_PATH=$(echo "$TACO_FILE_PATH" | sed 's/postgres/cratedb/')
           mv "$TACO_FILE_PATH" "$NEW_TACO_FILE_PATH"
+          TACO_FILE_PATH=$NEW_TACO_FILE_PATH
           
           echo Workflow: Taco file is in: $TACO_FILE_PATH
           
