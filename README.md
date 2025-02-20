@@ -12,17 +12,21 @@ we circumvent/fix those limitations with our custom connector.
 
 You will need two things:
 
-The `postgresql jdbc driver` and the `cratedb_tableau_connector`.
+The `postgresql jdbc driver` and the `cratedb_jdbc`.
 
 ### Get the Postgresql jdbc driver.
 
 Download the driver from [here](https://jdbc.postgresql.org/download/) and put it in:
 
-- Windows - C:\Program Files\Tableau\Drivers
-- Mac - ~/Library/Tableau/Drivers
-- Linux -  /opt/tableau/tableau_driver/jdbc 
+- Windows: `C:\Program Files\Tableau\Drivers`
+- Mac: `~/Library/Tableau/Drivers`
+- Linux: `/opt/tableau/tableau_driver/jdbc` 
 
-The latest tested one is `postgresql-42.7.3.jar`
+The latest PostgreSQL jdbc tested driver is `postgresql-42.7.4.jar`.
+
+The latest CrateDB jdbc tested driver is `cratedb-jdbc-standalone-2.7.0`
+
+Note: `postgresql-42.7.5.jar` does not seem to work.
 
 ### Get the connector.
 
@@ -33,17 +37,17 @@ Put it in:
 
 #### Tableau Desktop
 
-- Windows - C:\Users\[Windows User]\Documents\My Tableau Repository\Connectors 
-- MacOS - /Users/[user]/Documents/My Tableau Repository/Connectors
+- Windows: `C:\Users\[Windows User]\Documents\My Tableau Repository\Connectors`
+- MacOS: `/Users/[user]/Documents/My Tableau Repository/Connectors`
 
 #### Tableau Prep Builder
 
-- Windows -  C:\Users\[Windows User]\Documents\My Tableau Prep Repository\Connectors
-- MacOS - /Users//Documents/My Tableau Prep Repository/Connectors
+- Windows:  `C:\Users\[Windows User]\Documents\My Tableau Prep Repository\Connectors`
+- MacOS: `/Users//Documents/My Tableau Prep Repository/Connectors`
 
 #### Tableau Server
-- Windows - C:\Program Files\Tableau\Connectors
-- Linux - /opt/tableau/connectors
+- Windows: `C:\Program Files\Tableau\Connectors`
+- Linux: `/opt/tableau/connectors`
 
 For older versions see https://help.tableau.com/current/pro/desktop/en-us/examples_connector_sdk.htm
 
@@ -53,5 +57,5 @@ For older versions see https://help.tableau.com/current/pro/desktop/en-us/exampl
 This custom connector aims to offer the best Tableau experience possible, this is a work in progress since 
 PostgresSQL compatibility is not 100% and is bound to change over time.
 
-We test compatibility issues with Tableau's connector sdk (TDVT).
+We test compatibility issues with Tableau's connector sdk: [TDVT suite](https://tableau.github.io/connector-plugin-sdk/docs/tdvt).
 Progress is tracked in https://github.com/crate/cratedb-tableau-connector/issues/2
