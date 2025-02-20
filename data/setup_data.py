@@ -44,6 +44,14 @@ if __name__ == '__main__':
         except polars.exceptions.ColumnNotFoundError:
             pass
 
+        # Set all empty strings as explicit NULLs since that's what Tableau's expects.
+        df = df.with_columns(
+            pl.when(pl.col(pl.String).str.len_chars() == 0)
+            .then(None)
+            .otherwise(pl.col(pl.String))
+            .name.keep()
+        )
+
         logging.info(f'Loading to CrateDB {file.get('name')!r}')
         df.write_database(file.get('name'),
                           connection=CRATEDB_SQLALCHEMY,
