@@ -51,6 +51,9 @@ jobs:
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
           TACO_FILE_PATH=$(find "$(pwd)/packaged-connector" -name "*.taco" | head -n 1)
           
+          NEW_TACO_FILE_PATH=$(echo "$TACO_FILE_PATH" | sed 's/postgres/cratedb/')
+          mv "$TACO_FILE_PATH" "$NEW_TACO_FILE_PATH"
+          
           echo Workflow: Taco file is in: $TACO_FILE_PATH
           
           if [[ "$TACO_FILE_PATH" != *"cratedb_jdbc"* ]]; then
