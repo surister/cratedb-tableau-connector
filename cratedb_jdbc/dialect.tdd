@@ -2,7 +2,7 @@
 
 <!-- See notes below for definitions that require 2020.3 or newer -->
 <dialect name='FullPostgreSQL90JDBC'
-         class='cratedb_jdbc'
+         class='postgres_jdbc'
          version='18.1'>
     <function-map>
         <function group='numeric' name='ABS' return-type='real'>
@@ -1213,6 +1213,7 @@
         <aggregation value='TRUNC_ISO_WEEK'/>
         <aggregation value='TRUNC_ISO_WEEKDAY'/>
     </supported-aggregations>
+
     <sql-format>
         <date-literal-escape value='PostgresStyle'/>
         <date-parts>
@@ -1385,5 +1386,12 @@
             <token key="V" value="TZ"/>    <!-- Time Zone: specific non-location, identical to z (PDT) -->
             <token key="VVVV" value="TZ"/> <!-- Time Zone: generic location (United States (Los Angeles)) -->
         </icu-date-token-map>
+        <supported-joins>
+            <part name='Inner'/>
+            <part name='Left'/>
+            <part name='Right'/>
+            <part name='Full'/>
+            <part name='Cross'/>
+        </supported-joins>
     </sql-format>
 </dialect>
