@@ -195,3 +195,39 @@ On MacOs:
 `/Users/YOUR_USER/Documents/My Tableau Repository/Logs`
 
 Tableau server logs can be found [here](https://help.tableau.com/current/server/en-us/logs_loc.htm)
+
+# Building and releasing.
+The CI pipeline validates that the connector is valid, but it is not comprehensive enough and connectivity errors
+could still be present.
+
+If something else than the dialect is modified it is good practice to build beforehand and test the connector locally.
+
+You can test:
+* That the connector shows up properly in Tableau desktop.
+* That basic connection and data visualization works in a CrateDB cluster.
+
+## Building locally for testing.
+
+Clone Tableau's [connector-plugin-sdk](https://github.com/tableau/connector-plugin-sdk), inside `cratedb-tableau-connector`.
+
+In `\cratedb-tableau-connector\connector-plugin-sdk\connector-packager`
+
+Run `python -m connector_packager.package \cratedb-tableau-connector\cratedb_jdbc` and perform an user installation
+as explained in the README.md
+
+Alternatively if you don't want to build locally, you can create a new release, set it as `draft` and download the
+taco file generated in the release.
+
+## Releasing
+
+1. Make one commit/pull request where you bump up the version in `cratedb_jdbc/manifest.xml`, for example:
+
+   Before: `<connector-plugin class='postgres_jdbc' superclass='jdbc' plugin-version='0.0.2' name='CrateDB' version='18.1' min-version-tableau='2020.4'>`
+   
+   After: `<connector-plugin class='postgres_jdbc' superclass='jdbc' plugin-version='0.0.3' name='CrateDB' version='18.1' min-version-tableau='2020.4'>`
+
+2. Go to [releases](https://github.com/crate/cratedb-tableau-connector)  and click on `Draft new release`.
+3. Create a new tag following the convention with the Target branch `main`.
+4. Click on `Generate release notes`, amend the notes as needed and publish.
+5. The pipeline will run and upload the taco file to the releases' assets, check that the pipeline
+run correctly and the file exists.
