@@ -1138,25 +1138,25 @@
             <argument type='str'/>
         </date-function>
         <date-function name='DATETRUNC' return-type='datetime'>
-            <formula>DATE_TRUNC('%1', %2)::TIMESTAMP</formula>
-            <formula part='weekday'>%2:: TIMESTAMP</formula>
+            <formula>DATE_TRUNC('%1', %2)</formula>
+            <formula part='weekday'>%2</formula>
             <argument type='localstr'/>
             <argument type='str'/>
         </date-function>
         <date-function name='DATETRUNC' return-type='datetime'>
-            <formula>DATE_TRUNC('%1', %2)::TIMESTAMP</formula>
-            <formula part="dayofyear">DATE_FORMAT('%j', %2) :: TIMESTAMP</formula>
+            <formula>DATE_TRUNC('%1', %2)</formula>
+            <formula part="dayofyear">DATE_FORMAT(%2)</formula>
             <argument type='localstr'/>
             <argument type='date'/>
         </date-function>
         <date-function name='DATETRUNC' return-type='datetime'>
-            <formula>DATE_TRUNC('%1', %2)::TIMESTAMP</formula>
-            <formula part="dayofyear">DATE_FORMAT('%j', %2) :: TIMESTAMP</formula>
+            <formula>DATE_TRUNC('%1', %2)</formula>
+            <formula part="dayofyear">DATE_TRUNC('day', %2)</formula>
             <argument type='localstr'/>
             <argument type='datetime'/>
         </date-function>
         <date-function name='DATETRUNC' return-type='datetime'>
-            <formula>DATE_TRUNC('%1', %2)::TIMESTAMP</formula>
+            <formula>DATE_TRUNC('%1', %2)</formula>
             <formula part="dayofyear">%3</formula>
             <argument type='localstr'/>
             <argument type='str'/>
