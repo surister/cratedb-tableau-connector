@@ -230,4 +230,4 @@ taco file generated in the release.
 3. Create a new tag following the convention with the Target branch `main`.
 4. Click on `Generate release notes`, amend the notes as needed and publish.
 5. The pipeline will run and upload the taco file to the releases' assets, check that the pipeline
-run correctly and the file exists.
+runs correctly and the file exists.
