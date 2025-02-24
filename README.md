@@ -50,6 +50,16 @@ Put it in:
 
 For older versions see https://help.tableau.com/current/pro/desktop/en-us/examples_connector_sdk.htm
 
+## Disabling signature verification.
+
+The current release of the connector is not signed. This issue is being addressed, but in the meantime, verification can be disabled.
+
+* On `Tableau Desktop`, you use this command: `-DDisableVerifyConnectorPluginSignature=true`
+
+* On `server`, you can disable signature verification by setting `native_api.disable_verify_connector_plugin_signature` to `true` via TSM.
+
+More information can be found [here](https://tableau.github.io/connector-plugin-sdk/docs/run-taco)
+
 
 ## State of the driver.
 
