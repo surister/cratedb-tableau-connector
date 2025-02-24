@@ -1111,7 +1111,7 @@
         </date-function>
         <date-function name='DATEPART' return-type='int'>
             <formula>CAST(TRUNC(EXTRACT(%1 FROM %2)) AS INTEGER)</formula>
-            <formula part='weekday'>(CAST(EXTRACT(DOW FROM %2) AS INTEGER))</formula>
+            <formula part='weekday'>(EXTRACT(DOW FROM %2) % 7) + 1</formula>
             <formula part='week'>CAST(FLOOR((7 + EXTRACT(DOY FROM %2) - 1 + EXTRACT(DOW FROM DATE_TRUNC(&apos;YEAR&apos;,
                 %2))) / 7) AS INTEGER)
             </formula>
