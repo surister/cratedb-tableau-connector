@@ -54,7 +54,7 @@ For older versions see https://help.tableau.com/current/pro/desktop/en-us/exampl
 
 The current release of the connector is not signed. This issue is being addressed, but in the meantime, verification can be disabled.
 
-* On `Tableau Desktop`, you use this command: `-DDisableVerifyConnectorPluginSignature=true`
+* On _Tableau Desktop_, please use this command-line argument: `-DDisableVerifyConnectorPluginSignature=true`
 
 * On `server`, you can disable signature verification by setting `native_api.disable_verify_connector_plugin_signature` to `true` via TSM.
 
