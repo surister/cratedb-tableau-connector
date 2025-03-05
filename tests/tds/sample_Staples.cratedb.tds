@@ -1,19 +1,21 @@
 <?xml version='1.0' encoding='utf-8' ?>
 
-<!-- build 20243.24.1211.0901                               -->
-<datasource formatted-name='federated.0zdhgpy15494rv195xdl41cu7d9o' inline='true' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+<!-- build 20243.25.0114.1153                               -->
+<datasource formatted-name='federated.08nrm2f1l14dpr12vj5vb1iir08n' inline='true' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
   <document-format-change-manifest>
     <ObjectModelEncapsulateLegacy />
     <ObjectModelTableType />
     <SchemaViewerObjectModel />
   </document-format-change-manifest>
-  <connection class='federated'>
+  <connection tdvtconnection='cratedb_connection' class='federated'>
     <named-connections>
-      <named-connection caption='192.168.88.251' name='cratedb_jdbc.1k6o9ln0efm9mu1gxeg5k0twyss0'>
-        <connection authentication='auth-user' class='cratedb_jdbc' dbname='crate' one-time-sql='' port='5432' schema='doc' server='192.168.88.251' sslmode='' username='crate' />
+      <named-connection caption='192.168.88.251' name='leaf'>
+
+        <connection tdvtconnection='cratedb_connection' authentication='auth-user' class='postgres_jdbc' dbname='crate' one-time-sql='' port='5432' schema='doc' server='192.168.88.251' sslmode='' username='crate' />
       </named-connection>
     </named-connections>
-    <relation connection='cratedb_jdbc.1k6o9ln0efm9mu1gxeg5k0twyss0' name='Staples' table='[doc].[Staples]' type='table' />
+    <relation connection='leaf' name='Staples' table='[doc].[Staples]' type='table' />
+
     <metadata-records>
       <metadata-record class='column'>
         <remote-name>Item Count</remote-name>
@@ -26,7 +28,7 @@
         <aggregation>Sum</aggregation>
         <precision>10</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Ship Priority</remote-name>
@@ -42,7 +44,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Priority</remote-name>
@@ -58,7 +60,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Status</remote-name>
@@ -74,7 +76,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Quantity</remote-name>
@@ -87,7 +89,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Sales Total</remote-name>
@@ -100,7 +102,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Discount</remote-name>
@@ -113,7 +115,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Tax Rate</remote-name>
@@ -126,7 +128,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Ship Mode</remote-name>
@@ -142,7 +144,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Fill Time</remote-name>
@@ -155,7 +157,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Gross Profit</remote-name>
@@ -168,7 +170,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Price</remote-name>
@@ -181,7 +183,7 @@
         <aggregation>Sum</aggregation>
         <scale>0</scale>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Ship Handle Cost</remote-name>
@@ -194,7 +196,7 @@
         <aggregation>Sum</aggregation>
         <scale>0</scale>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Employee Name</remote-name>
@@ -210,7 +212,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Employee Dept</remote-name>
@@ -226,7 +228,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Manager Name</remote-name>
@@ -242,7 +244,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Employee Yrs Exp</remote-name>
@@ -255,7 +257,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Employee Salary</remote-name>
@@ -268,7 +270,7 @@
         <aggregation>Sum</aggregation>
         <scale>0</scale>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Customer Name</remote-name>
@@ -284,7 +286,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Customer State</remote-name>
@@ -300,7 +302,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Call Center Region</remote-name>
@@ -316,7 +318,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Customer Balance</remote-name>
@@ -329,7 +331,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Customer Segment</remote-name>
@@ -345,7 +347,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Prod Type1</remote-name>
@@ -361,7 +363,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Prod Type2</remote-name>
@@ -377,7 +379,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Prod Type3</remote-name>
@@ -393,7 +395,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Prod Type4</remote-name>
@@ -409,7 +411,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Product Name</remote-name>
@@ -425,7 +427,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Product Container</remote-name>
@@ -441,7 +443,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Ship Promo</remote-name>
@@ -457,7 +459,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Supplier Name</remote-name>
@@ -473,7 +475,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Supplier Balance</remote-name>
@@ -486,7 +488,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Supplier Region</remote-name>
@@ -502,7 +504,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Supplier State</remote-name>
@@ -518,7 +520,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order ID</remote-name>
@@ -534,7 +536,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Year</remote-name>
@@ -547,7 +549,7 @@
         <aggregation>Sum</aggregation>
         <precision>10</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Month</remote-name>
@@ -560,7 +562,7 @@
         <aggregation>Sum</aggregation>
         <precision>10</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Day</remote-name>
@@ -573,7 +575,7 @@
         <aggregation>Sum</aggregation>
         <precision>10</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Date</remote-name>
@@ -585,7 +587,7 @@
         <local-type>datetime</local-type>
         <aggregation>Year</aggregation>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Order Quarter</remote-name>
@@ -601,7 +603,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Product Base Margin</remote-name>
@@ -614,7 +616,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Product ID</remote-name>
@@ -630,7 +632,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Receive Time</remote-name>
@@ -643,7 +645,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Received Date</remote-name>
@@ -655,7 +657,7 @@
         <local-type>datetime</local-type>
         <aggregation>Year</aggregation>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Ship Date</remote-name>
@@ -667,7 +669,7 @@
         <local-type>datetime</local-type>
         <aggregation>Year</aggregation>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Ship Charge</remote-name>
@@ -680,7 +682,7 @@
         <aggregation>Sum</aggregation>
         <scale>0</scale>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Total Cycle Time</remote-name>
@@ -693,7 +695,7 @@
         <aggregation>Sum</aggregation>
         <precision>17</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Product In Stock</remote-name>
@@ -709,7 +711,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>PID</remote-name>
@@ -722,7 +724,7 @@
         <aggregation>Sum</aggregation>
         <precision>10</precision>
         <contains-null>false</contains-null>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
       <metadata-record class='column'>
         <remote-name>Market Segment</remote-name>
@@ -738,7 +740,7 @@
         <attributes>
           <attribute datatype='string' name='TypeIsVarchar'>&quot;true&quot;</attribute>
         </attributes>
-        <object-id>[Staples_FFFE2C33C4794455BE094F06996EBC80]</object-id>
+        <object-id>[Staples_AC3CBD17810D4413B19E0809B776A167]</object-id>
       </metadata-record>
     </metadata-records>
   </connection>
@@ -748,7 +750,7 @@
   <column datatype='integer' name='[Order Month]' role='dimension' type='quantitative' />
   <column datatype='integer' name='[Order Year]' role='dimension' type='quantitative' />
   <column datatype='string' name='[Supplier State]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
-  <column caption='Staples' datatype='table' name='[__tableau_internal_object_id__].[Staples_FFFE2C33C4794455BE094F06996EBC80]' role='measure' type='quantitative' />
+  <column caption='Staples' datatype='table' name='[__tableau_internal_object_id__].[Staples_AC3CBD17810D4413B19E0809B776A167]' role='measure' type='quantitative' />
   <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
   <semantic-values>
     <semantic-value key='[Country].[Name]' value='&quot;Spain&quot;' />
@@ -756,9 +758,10 @@
   <date-options start-of-week='monday' />
   <object-graph>
     <objects>
-      <object caption='Staples' id='Staples_FFFE2C33C4794455BE094F06996EBC80'>
+      <object caption='Staples' id='Staples_AC3CBD17810D4413B19E0809B776A167'>
         <properties context=''>
-          <relation connection='cratedb_jdbc.1k6o9ln0efm9mu1gxeg5k0twyss0' name='Staples' table='[doc].[Staples]' type='table' />
+          <relation connection='leaf' name='Staples' table='[doc].[Staples]' type='table' />
+
         </properties>
       </object>
     </objects>
