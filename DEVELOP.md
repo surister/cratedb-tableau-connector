@@ -139,9 +139,9 @@ name convection {table_name}.cratedb inside the directory `./tests/tds`
    
    ![img_4.png](imgs/tds_img4.png)
 
-   `_sample_staples.cratedb.tds` and `_sample_cast_calcs.cratedb.tds` are provided as examples of how they'd look like.
+   `sample_Staples.cratedb.tds` and `sample_cast_calcs.cratedb.tds` are provided as examples of how they'd look like.
    Alternatively, as they only differ in the connection values, you could theoretically open the sample files, and
-   add your CrateDB connection parameters, however this is not recommended as it might not work in the future, also if table
+   add your CrateDB connection parameters (also remove 'sample_' from the file name), however this is not recommended as it might not work in the future, also if table
    schema changes, tds files would need to be re-created.
 
 6. Create the Tableau tds tests. Important: Read all before running the command.
