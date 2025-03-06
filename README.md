@@ -1,5 +1,6 @@
 # CrateDB tableau's connector.
-[![Validate and Release connector](https://github.com/crate/cratedb-tableau-connector/actions/workflows/tests_and_release.yml/badge.svg)](https://github.com/crate/cratedb-tableau-connector/actions/workflows/tests_and_release.yml)
+
+[![CI status](https://github.com/crate/cratedb-tableau-connector/actions/workflows/main.yml/badge.svg)](https://github.com/crate/cratedb-tableau-connector/actions/workflows/main.yml)
 ![GitHub Release](https://img.shields.io/github/v/release/crate/cratedb-tableau-connector)
 ![Static Badge](https://img.shields.io/badge/tdvt_compatibility-95%25-brightgreen?style=flat&logo=cratedb)
 ![Static Badge](https://img.shields.io/badge/CrateDB-5.10.1-brightgreen?style=flat&logo=cratedb)
