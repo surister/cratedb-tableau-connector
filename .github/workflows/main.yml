@@ -47,6 +47,10 @@ jobs:
         run: |
           source ./.venv/bin/activate
           python -m connector_packager.package --validate-only $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
+          
+          cat packaging_logs.txt
+          // If validation fails, stop the job.
+          grep 'validation failed' packaging_logs.txt && exit 1
 
       - name: Build connector
         if: ${{ github.event_name == 'release' }}
