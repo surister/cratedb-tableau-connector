@@ -51,9 +51,8 @@ jobs:
           cat packaging_logs.txt
           
           # If validation fails, stop the job.
-          if grep 'validation failed' packaging_logs.txt; then
-            exit 1
-          fi
+          grep 'validation succeeded' packaging_logs.txt
+    
 
       - name: Build connector
         if: ${{ github.event_name == 'release' }}
