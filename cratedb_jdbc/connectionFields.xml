@@ -13,4 +13,7 @@
     </boolean-options>
   </field>
 
+
+  <field name="authentication" label="Authentication" category="authentication" value-type="string" editable="false" default-value="ignored_field" />
+
 </connection-fields>
