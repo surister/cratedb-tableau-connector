@@ -51,7 +51,7 @@ jobs:
           cat packaging_logs.txt
           
           # If validation fails, stop the job.
-          grep 'validation succeeded' packaging_logs.txt
+          grep 'Validation succeeded' packaging_logs.txt
     
 
       - name: Build connector
