@@ -62,18 +62,21 @@ jobs:
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
           TACO_FILE_PATH=$(find "$(pwd)/packaged-connector" -name "*.taco" | head -n 1)
           
-          NEW_TACO_FILE_PATH=$(echo "$TACO_FILE_PATH" | sed 's/postgres/cratedb/')
+          NEW_TACO_FILE_PATH=$(echo "$TACO_FILE_PATH" | sed 's/postgres/unsigned_cratedb/')
           mv "$TACO_FILE_PATH" "$NEW_TACO_FILE_PATH"
           TACO_FILE_PATH=$NEW_TACO_FILE_PATH
           
           echo Workflow: Taco file is in: $TACO_FILE_PATH
           
-          if [[ "$TACO_FILE_PATH" != *"cratedb_jdbc"* ]]; then
-            echo "Error: TACO_FILE does not contain 'cratedb_jdbc', are we correctly building and getting the full path?" >&2
+          if [[ "$TACO_FILE_PATH" != *"unsigned_cratedb_jdbc"* ]]; then
+            echo "Error: TACO_FILE does not contain 'unsigned_cratedb_jdbc', are we correctly building and getting the full path?" >&2
             exit 1
           fi
           
-          echo "TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
+          echo "UNSIGNED_TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
+      - name: Sign package
+        run: |
+          echo ${{ UNSIGNED_TACO_FILE_PATH }} 
 
       - name: Upload the connector to GH release assets
         uses: softprops/action-gh-release@v2
