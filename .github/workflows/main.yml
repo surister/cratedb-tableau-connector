@@ -75,8 +75,10 @@ jobs:
           
           echo "UNSIGNED_TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
       - name: Sign package
+        if: ${{ github.event_name == 'release' }}
         run: |
-          echo ${{ UNSIGNED_TACO_FILE_PATH }} 
+          echo ${{ steps.build-connector.outputs.UNSIGNED_TACO_FILE_PATH }}
+          echo $UNSIGNED_TACO_FILE_PATH
 
       - name: Upload the connector to GH release assets
         uses: softprops/action-gh-release@v2
