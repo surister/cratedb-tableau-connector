@@ -89,7 +89,7 @@ jobs:
           export SIGNED_TACO_FILE_PATH=$(echo "$UNSIGNED_TACO_FILE_PATH" | sed 's/unsigned_//')
           export SIGN_TOOLS_PATH=$GITHUB_WORKSPACE/cratedb-tableau-connector/sign_tools
           
-          wget -O $SIGN_TOOLS_PATH/digicert-jce-1.0.jar https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk18on/1.80/bcprov-jdk18on-1.80.jar
+          wget -O $SIGN_TOOLS_PATH/bcprov-jdk18on-1.77.jar https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk18on/1.80/bcprov-jdk18on-1.80.jar
           
           echo $SM_CLIENT_CERT_FILE
           echo $SM_API_KEY
