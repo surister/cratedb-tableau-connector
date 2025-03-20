@@ -83,7 +83,7 @@ jobs:
           SM_CLIENT_CERT_FILE: ${{ secrets.CERT_PATH }}
           SM_CLIENT_CERT_PASSWORD: ${{ secrets.SM_CLIENT_CERT_PASSWORD }}
         run: |
-          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > ${{ secrets.CERT_PATH }}
+          echo "${{ secrets.SM_AUTH_CERTIFICATE_B64 }}" | base64 --decode > ${{ secrets.CERT_PATH }}
           export UNSIGNED_TACO_FILE_PATH=${{ steps.build-connector.outputs.UNSIGNED_TACO_FILE_PATH }}
           export SIGNED_TACO_FILE_PATH=$(echo "$UNSIGNED_TACO_FILE_PATH" | sed 's/unsigned_//')
           export SIGN_TOOLS_PATH=$GITHUB_WORKSPACE/cratedb-tableau-connector/sign_tools
