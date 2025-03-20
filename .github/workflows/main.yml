@@ -54,29 +54,47 @@ jobs:
           grep 'Validation succeeded' packaging_logs.txt
 
       - name: Build connector
+        id: build-connector
         if: ${{ github.event_name == 'release' }}
         working-directory: connector-packager
-        id: build-connector
         run: |
           source ./.venv/bin/activate
           python -m connector_packager.package $GITHUB_WORKSPACE/cratedb-tableau-connector/cratedb_jdbc
           TACO_FILE_PATH=$(find "$(pwd)/packaged-connector" -name "*.taco" | head -n 1)
           
-          NEW_TACO_FILE_PATH=$(echo "$TACO_FILE_PATH" | sed 's/postgres/cratedb/')
+          NEW_TACO_FILE_PATH=$(echo "$TACO_FILE_PATH" | sed 's/postgres/unsigned_cratedb/')
           mv "$TACO_FILE_PATH" "$NEW_TACO_FILE_PATH"
           TACO_FILE_PATH=$NEW_TACO_FILE_PATH
           
           echo Workflow: Taco file is in: $TACO_FILE_PATH
           
-          if [[ "$TACO_FILE_PATH" != *"cratedb_jdbc"* ]]; then
-            echo "Error: TACO_FILE does not contain 'cratedb_jdbc', are we correctly building and getting the full path?" >&2
+          if [[ "$TACO_FILE_PATH" != *"unsigned_cratedb_jdbc"* ]]; then
+            echo "Error: TACO_FILE does not contain 'unsigned_cratedb_jdbc', are we correctly building and getting the full path?" >&2
             exit 1
           fi
           
-          echo "TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
+          echo "UNSIGNED_TACO_FILE_PATH=$TACO_FILE_PATH" >> $GITHUB_OUTPUT
+      - name: Sign package
+        id: sign-connector
+        if: ${{ github.event_name == 'release' }}
+        env:
+          SM_HOST: ${{ secrets.SM_HOST }}
+          SM_API_KEY: ${{ secrets.SM_API_KEY }}
+          SM_CLIENT_CERT_FILE: ${{ secrets.CERT_PATH }}
+          SM_CLIENT_CERT_PASSWORD: ${{ secrets.SM_CLIENT_CERT_PASSWORD }}
+        run: |
+          echo "${{ secrets.SM_AUTH_CERTIFICATE_B64 }}" | base64 --decode > ${{ secrets.CERT_PATH }}
+          export UNSIGNED_TACO_FILE_PATH=${{ steps.build-connector.outputs.UNSIGNED_TACO_FILE_PATH }}
+          export SIGNED_TACO_FILE_PATH=$(echo "$UNSIGNED_TACO_FILE_PATH" | sed 's/unsigned_//')
+          export SIGN_TOOLS_PATH=$GITHUB_WORKSPACE/cratedb-tableau-connector/sign_tools
+          
+          wget -O $SIGN_TOOLS_PATH/digicert-jce-1.0.jar https://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk18on/1.80/bcprov-jdk18on-1.80.jar
+          
+          jarsigner -J-Djava.class.path=$SIGN_TOOLS_PATH/digicert-jce-1.0.jar:$SIGN_TOOLS_PATH/bcprov-jdk18on-1.77.jar -keystore NONE -storetype DIGICERT -storepass NONE -providerClass com.digicert.jce.Provider -signedjar $SIGNED_TACO_FILE_PATH -sigalg SHA256withRSA -tsa http://timestamp.digicert.com $UNSIGNED_TACO_FILE_PATH ${{ secrets.SM_KEY_ALIAS }}
+          echo "SIGNED_TACO_FILE_PATH" >> $GITHUB_OUTPUT
 
       - name: Upload the connector to GH release assets
         uses: softprops/action-gh-release@v2
         if: ${{ github.event_name == 'release' }}
         with:
-          files: ${{ steps.build-connector.outputs.TACO_FILE_PATH }}
+          files: ${{ steps.sign-connector.outputs.SIGNED_TACO_FILE_PATH }}
