@@ -82,6 +82,7 @@ jobs:
           SM_API_KEY: ${{ secrets.SM_API_KEY }}
           SM_CLIENT_CERT_FILE: ${{ secrets.CERT_PATH }}
           SM_CLIENT_CERT_PASSWORD: ${{ secrets.SM_CLIENT_CERT_PASSWORD }}
+          DOI: somevalue
         run: |
           echo "${{ secrets.SM_AUTH_CERTIFICATE_B64 }}" | base64 --decode > ${{ secrets.CERT_PATH }}
           export UNSIGNED_TACO_FILE_PATH=${{ steps.build-connector.outputs.UNSIGNED_TACO_FILE_PATH }}
@@ -92,6 +93,7 @@ jobs:
           
           echo $SM_CLIENT_CERT_FILE
           echo $SM_API_KEY
+          echo $DOI
           ls $SIGN_TOOLS_PATH
           cat /tmp/test.key
           
