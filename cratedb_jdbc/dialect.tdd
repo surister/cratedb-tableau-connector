@@ -477,7 +477,7 @@
             <argument type='str'/>
         </function>
         <function group='cast' name='STR' return-type='str'>
-            <formula>CAST(%1 AS TEXT)</formula>
+            <formula>DATE_FORMAT('%b %e %Y %h:%i%p',%1)</formula>
             <argument type='datetime'/>
         </function>
         <function group='logical' name='IFNULL' return-type='bool'>
